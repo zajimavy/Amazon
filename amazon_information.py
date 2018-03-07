@@ -19,18 +19,18 @@ import datetime
 today = datetime.datetime.now()
 #print today.strftime("%Y-%m-%d")
 #exit()
-AccessKeyID = 'AKIAII7SIICRLNY4DX4A'
-SecretKey = '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'
+AccessKeyID = 'ACCESS KEY'
+SecretKey = 'SECRET KEY'
 
 
-merchant_id = 'A1X4G4EP9W5CW1'
-marketplaceId = 'ATVPDKIKX0DER'
+merchant_id = 'MERCHANT ID'
+marketplaceId = 'MARKETPLACE ID'
 
 
 conn = MWSConnection(AccessKeyID,SecretKey)
-conn.SellerId = 'A1X4G4EP9W5CW1'
-conn.Merchant = 'Fanzz Sports'
-conn.MarketplaceId = 'ATVPDKIKX0DER' #https://docs.developer.amazonservices.com/en_US/dev_guide/DG_Endpoints.html
+conn.SellerId = 'SELLER ID'
+conn.Merchant = MERCHANT NAME'
+conn.MarketplaceId = 'MARKETPLACE' #https://docs.developer.amazonservices.com/en_US/dev_guide/DG_Endpoints.html
 
 
 #variants = tera.runQuery("select * from fanzz_labs.js_upc_amazon") #where upc = '190528763607'
@@ -46,11 +46,11 @@ m.amz_asin
 , p.retailvariant_id
 
 
-from fanzz_labs.m_amazon_upc m 
-left join p_fanzz_views.vFanzz_Product p on p.upc = m.upc
+from UPC TABLE m 
+left join PRODUCT TABLE p on p.upc = m.upc
 
 where m.amz_asin is not null
-and m.amz_asin not in (select amz_asin from fanzz_labs.m_amazon )
+and m.amz_asin not in (select amz_asin from AMAZON LISTING TABLE )
 and m.amz_asin <> 'B075TZHPSC'
 group by 1,2
  ''' )
@@ -132,7 +132,7 @@ for item in ASINLIST:
     print 'Do we have buy box? ' + fanzzinbuybox
     ASIN = ASIN[0]
     parent = str(parent[0])
-    sql = """insert into fanzz_labs.m_amazon values('%s','%s','%s','%s','%s','%s','%s',current_timestamp,'%s','%s','%s','%s')""" % (ASIN,parent,float(lowestprice),float(shipprice),channel,slsrank,title.replace("'", "''"),RetailVariantID ,listingcount,buyboxprice,str(fanzzinbuybox))
+    sql = """insert into AMAZON LISTING TABLE values('%s','%s','%s','%s','%s','%s','%s',current_timestamp,'%s','%s','%s','%s')""" % (ASIN,parent,float(lowestprice),float(shipprice),channel,slsrank,title.replace("'", "''"),RetailVariantID ,listingcount,buyboxprice,str(fanzzinbuybox))
     #print str(sql)
     
     tera.upload (sql) 
@@ -146,24 +146,19 @@ for item in ASINLIST:
 #Set up an email
 ###################################
 
-fr = 'John.Stockinger@lhmsports.com'
+fr = 'FROM EMAIL'
 to = [
- "John.Stockinger@lhmsports.com"
-#, "Steven.Scalzi@lhmsports.com"
+"MY OLD EMAIL HERE"
 ]
 
 cc = [
-#"Scott.Nelson@lhmsports.com"
-#, "Justin.Trujillo@lhmsports.com"
-#, "Jered.Tate@lhmsports.com"
-#, "John.Stockinger@lhmsports.com"
+"CO WORKERS EMAIL"
 
 ]
-
 subject = 'Weekly Store Capacity'
 server = 'mail.lhmsports.com'
 file_name = "test.xlsx"
-file_path = "N:\Planning\John\Data\Excel Files\\%s" % file_name
+file_path = "FILE PATH\\%s" % file_name
 data_sheet_name = "Data"
 message = """
 Team,

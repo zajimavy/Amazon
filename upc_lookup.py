@@ -19,21 +19,21 @@ import datetime
 today = datetime.datetime.now()
 #print today.strftime("%Y-%m-%d")
 #exit()
-AccessKeyID = 'AKIAII7SIICRLNY4DX4A'
-SecretKey = '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'
+AccessKeyID = 'ACCESS KEY'
+SecretKey = 'SECRET KEY'
 
 
-merchant_id = 'A1X4G4EP9W5CW1'
-marketplaceId = 'ATVPDKIKX0DER'
+merchant_id = 'SELLER ID'
+marketplaceId = 'MARKETPLACE'
 
 
 conn = MWSConnection(AccessKeyID,SecretKey)
-conn.SellerId = 'A1X4G4EP9W5CW1'
-conn.Merchant = 'Fanzz Sports'
-conn.MarketplaceId = 'ATVPDKIKX0DER' #https://docs.developer.amazonservices.com/en_US/dev_guide/DG_Endpoints.html
+conn.SellerId = 'SELLER ID'
+conn.Merchant = 'MERCHANT NAME'
+conn.MarketplaceId = 'MARKETPLACE' #https://docs.developer.amazonservices.com/en_US/dev_guide/DG_Endpoints.html
 
 
-variants = tera.runQuery("select * from fanzz_labs.js_top_sellers   where sales >= '1000' ") #where upc = '190528763607'
+variants = tera.runQuery("select * from list_of_top_sellers  where sales >= '1000' ") #where upc = '190528763607'
 
 #print variants
 
@@ -54,7 +54,7 @@ for variant in variants:
     #	print asin
     	#print '1 Row Uploaded: ' + UPC  + '|' + SKU[0]
     	try:
-    		sql = "insert into fanzz_labs.m_amazon_upc values ('%s','%s')" %(SKU[0], asin)
+    		sql = "insert into Staging AMAZON UPC values ('%s','%s')" %(SKU[0], asin)
     		tera.upload(sql) 
     	except:
     		print "Duplicate Error"
@@ -64,7 +64,7 @@ for variant in variants:
     	print 'No Amazon Match: ', SKU[0]
     	asin = 'NULL'
     	try:
-    		sql = "insert into fanzz_labs.m_amazon_upc values ('%s',%s)" %(SKU[0], asin)
+    		sql = "insert into Staging AMAZON UPC values ('%s',%s)" %(SKU[0], asin)
     	 	tera.upload(sql) 
     	except:
     		print "Duplicate"
@@ -78,20 +78,15 @@ for variant in variants:
 #Set up an email
 ###################################
 
-fr = 'John.Stockinger@lhmsports.com'
+fr = 'FROM EMAIL'
 to = [
- "John.Stockinger@lhmsports.com"
-#, "Steven.Scalzi@lhmsports.com"
+"MY OLD EMAIL HERE"
 ]
 
 cc = [
-#"Scott.Nelson@lhmsports.com"
-#, "Justin.Trujillo@lhmsports.com"
-#, "Jered.Tate@lhmsports.com"
-#, "John.Stockinger@lhmsports.com"
+"CO WORKERS EMAIL"
 
 ]
-
 subject = 'Weekly Store Capacity'
 server = 'mail.lhmsports.com'
 file_name = "test.xlsx"

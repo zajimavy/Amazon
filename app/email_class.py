@@ -17,7 +17,7 @@ class Email:
 		msg['From'] = fr
 		msg['To'] = ", ".join(to)
 		msg['CC'] = ", ".join(cc)
-		msg['Reply-To'] = 'john.stockinger@lhmsports.com'
+		msg['Reply-To'] = 'REPLY EMAIL'
 		#body = MIMEText(text)
 		
 		msg.attach(MIMEText(text, 'html'))
@@ -40,7 +40,7 @@ class Email:
 		msg['From'] = fr
 		msg['To'] = ", ".join(to)
 		msg['CC'] = ", ".join(cc)
-		msg['Reply-To'] = 'john.stockinger@lhmsports.com'
+		msg['Reply-To'] = 'REPLY EMAIL'
 		#body = MIMEText(text)
 		
 		msg.attach(MIMEText(text, 'html'))
@@ -61,5 +61,5 @@ class Email:
 
 
 if __name__ == '__main__':
-	send = sendMail('Darren.Squires@fanzz.com', 'John.Stockinger@fanzz.com'.split(), 'Come to my office immediately','Found an error in GP. Need to discuss right now', 'mail.lhmretail.com')
+	send = sendMail('TO TEST', 'FROM TEST'.split(), 'Come to my office immediately','Found an error in GP. Need to discuss right now', 'MAIL SERVER')
 	

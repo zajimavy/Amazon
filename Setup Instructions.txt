@@ -1,0 +1,19 @@
+Welcome to John's VirtualEnv and Tools Setup extravaganza! 
+
+I've put together a package of tools and folder structure to make python development a little easier. 
+
+To set up everything you'll need to:
+
+1. Copy the "Skeleton Template" and rename it to your_file_name_here
+2. open a cmd window and cd into your copy. You'll need to be at this level for everything else
+	--IE: cd c:\john\your_file_name_here
+3. run the command: virtualenv venv
+	--Technically "venv" can be any name you want. I use it for simplicity.
+	--This creates a complete copy of the python environment residing on the server. You can now modify it, pip install items, etc. without harming 
+	the original installation
+4. install the requirements.txt with this line:
+	venv\scripts\pip install -r requirements.txt --upgrade
+5. You're done! you're now able to execute the run.py file with a command like:
+	venv\scripts\python run.py
+6. There's also a bat file example you can modify so you can schedule a task with the windows scheduler
+	

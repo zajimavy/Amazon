@@ -1,0 +1,5 @@
+et-xmlfile==1.0.1
+jdcal==1.2
+openpyxl==2.3.5
+pyodbc==3.0.10
+suds==0.4
